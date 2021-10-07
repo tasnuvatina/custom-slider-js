@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Slider</title>
+    <style>
+        *{
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+        body {
+            background: #bed2ff;
+            text-align: center;
+            padding-top: 100px;
+            color: rgb(1, 13, 36);
+        }
+        .card-button{
+            border: 1px solid black;
+            background: white;
+            padding: 15px 10px;
+            margin: 25px;
+            font-weight: bold;
+        }
+        .half-pos{
+            position: absolute;
+            top: 40%;
+            margin-top: 16px;
+            z-index: 1;
+            background-color: rgba(255, 255, 255, 0);
+            border: 0px;
+            outline: none;
+        }
+        .left-btn{
+            left: 0%;
+        }
+        .right-btn{
+            right: 0%;
+            transform: rotate(180deg);
+        }
+        .max-width-class{
+
+            margin-left:auto ;
+            margin-right: auto;
+            padding: 16px 80px 96px ;
+        }
+        .slider-div{
+            width: 100%;
+            height: 300px;
+            display: flex;
+            position: relative;
+            overflow-y: hidden;
+        }
+        .sliding-div-main{
+            height: 100%;
+            padding: 16px 16px;
+            background-color: bisque;
+            margin: 0px 16px;
+            text-align: center;
+        }
+        .sliding-card{
+            width: 450px;
+            margin: 16px 0px;
+            animation: example 1s ease-in forwards;
+        }
+        .static-card{
+            width: 450px;
+            margin: 16px 0px;
+            animation: example 1s ease-in forwards;
+        }
+        .hidden-class{
+            display: none;
+        }
+        
+        @keyframes example {
+        from {opacity: 0;}
+        to {transform: 1;}
+        }
+      </style>
+</head>
+<body>
+    <h1>Custom Slider</h1>
+    <div class="max-width-class">
+        <div class="slider-div">
+            <button id="left-slide-btn" class="half-pos left-btn"><img src="round-arrow.svg" alt=""></button>
+            <button id="right-slide-btn" class="half-pos rotate right-btn"><img src="round-arrow.svg" alt=""></button>
+            <div class="sliding-card">
+                <div class="sliding-div-main">
+                    <h3 class="card-header">Problem 1</h3>
+                    <p class="text-sm font-medium leading-5 pt-8 pb-20">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dolor malesuada vel magna semper </p>
+                   
+                </div>
+            </div>
+            <div class="sliding-card">
+                <div class="sliding-div-main">
+                     <h3 class="card-header">Problem 2</h3>
+                    <p class="text-sm font-medium leading-5 pt-8 pb-20">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dolor malesuada vel magna semper </p>
+                   
+                </div>
+            </div>
+            <div class="sliding-card">
+                <div class="sliding-div-main">
+                   <h3 class="card-header">Problem 3</h3>
+                    <p class="text-sm font-medium leading-5 pt-8 pb-20">YLorem ipsum dolor sit amet, consectetur adipiscing elit. Dolor malesuada vel magna semper </p>
+                   
+                </div>
+            </div>
+            <div class="sliding-card hidden-class">
+                <div class="sliding-div-main">
+                     <h3 class="card-header">Problem 4</h3>
+                    <p class="text-sm font-medium leading-5 pt-8 pb-20">YLorem ipsum dolor sit amet, consectetur adipiscing elit. Dolor malesuada vel magna semper </p>
+                   
+                </div>
+            </div>
+            <div class="sliding-card hidden-class">
+                <div class="sliding-div-main">
+                    <h3 class="card-header">Problem 5</h3>
+                    <p class="text-sm font-medium leading-5 pt-8 pb-20">YLorem ipsum dolor sit amet, consectetur adipiscing elit. Dolor malesuada vel magna semper </p>
+                   
+                </div>
+            </div>
+            <div class="sliding-card hidden-class">
+                <div class="sliding-div-main">
+                    <h3 class="card-header">Problem 6</h3>
+                    <p class="text-sm font-medium leading-5 pt-8 pb-20">YLorem ipsum dolor sit amet, consectetur adipiscing elit. Dolor malesuada vel magna semper </p>
+                   
+                </div>
+            </div>
+            <div class="sliding-card hidden-class">
+                <div class="sliding-div-main">
+                   <h3 class="card-header">Problem 7</h3>
+                    <p class="text-sm font-medium leading-5 pt-8 pb-20">YLorem ipsum dolor sit amet, consectetur adipiscing elit. Dolor malesuada vel magna semper </p>
+                   
+                </div>
+            </div>
+            <div class="sliding-card hidden-class">
+                <div class="sliding-div-main">
+                     <h3 class="card-header">Problem 8</h3>
+                    <p class="text-sm font-medium leading-5 pt-8 pb-20">YLorem ipsum dolor sit amet, consectetur adipiscing elit. Dolor malesuada vel magna semper </p>
+                   
+                </div>
+            </div>
+            <div class="static-card ">
+                <div class="sliding-div-main">
+                     <h3 class="card-header">Want to view more?</h3>
+                     <small>Create an account to view more.</small>
+                     <div class="text-center">
+                        <button type="submit" class="card-button">Create account</button>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let leftSlideButton=document.getElementById("left-slide-btn")
+        let rightSlideButton=document.getElementById("right-slide-btn")
+        let slidingCards= document.querySelectorAll(".sliding-card")
+        let counter=0;
+        if (counter == 0 ) {
+            leftSlideButton.disabled = true;
+        }
+              
+        rightSlideButton.onclick=()=>{
+            console.log(counter);
+            leftSlideButton.disabled = false;
+            
+            counter++;
+            for (let i = 0; i < slidingCards.length; i++) {
+              if ((counter+2) <slidingCards.length) {
+                slidingCards[counter-1].classList.add("hidden-class");
+                slidingCards[counter+2].classList.remove("hidden-class");
+                if((counter+2) >= slidingCards.length-1 ){
+                rightSlideButton.disabled = true;
+              }
+              
+              }
+
+            }
+        }
+        leftSlideButton.onclick=()=>{
+            console.log(counter);
+            rightSlideButton.disabled = false;
+            counter--;
+            
+            for (let i = 0; i < slidingCards.length; i++) {
+              if ((counter) >=0) {
+                slidingCards[counter+3].classList.add("hidden-class"); 
+                slidingCards[counter].classList.remove("hidden-class");
+                if(counter==0){
+                    leftSlideButton.disabled = true;
+                }
+                
+              }
+
+            }
+        }
+        // console.log(leftSlideButton,rightSlideButton,slidingCards);
+    </script>
+</body>
+</html>
